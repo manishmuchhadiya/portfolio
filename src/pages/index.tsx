@@ -16,17 +16,17 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
-import { AiOutlineOpenAI } from 'react-icons/ai'
+// import { AiOutlineOpenAI } from 'react-icons/ai'
 import {
   BiLogoFirebase,
-  BiLogoFlask,
+  // BiLogoFlask,
   BiLogoMongodb,
   BiLogoRedux,
   BiLogoTailwindCss,
-  BiLogoTypescript,
+  // BiLogoTypescript,
 } from 'react-icons/bi'
 import {
-  FaAws,
+  // FaAws,
   FaCss3,
   FaDocker,
   FaGitAlt,
@@ -42,8 +42,10 @@ import {
 import { FaRegCalendarDays, FaXTwitter } from 'react-icons/fa6'
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { IoLogoJavascript } from 'react-icons/io5'
-import { RiNextjsFill } from 'react-icons/ri'
-import { SiExpress, SiMui, SiPrisma } from 'react-icons/si'
+// import { RiNextjsFill } from 'react-icons/ri'
+import { SiExpress
+  // , SiMui, SiPrisma 
+} from 'react-icons/si'
 
 export default function Home() {
   return (
