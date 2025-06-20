@@ -548,7 +548,7 @@ const ContactForm: React.FC = () => {
                     type="submit"
                     size="lg"
                     w="full"
-                    isLoading={isSubmitting}
+                    loading={isSubmitting}
                     loadingText="Sending..."
                   >
                     Send Message
