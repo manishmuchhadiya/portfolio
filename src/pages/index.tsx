@@ -1,4 +1,5 @@
 'use client'
+
 import { CNLink } from '@/components/chakra-next'
 import { siteConfig } from '@/libs/configs/site.config'
 import { projectsData } from '@/libs/data/project.data'
@@ -16,17 +17,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
-// import { AiOutlineOpenAI } from 'react-icons/ai'
+import { BiLogoFirebase, BiLogoMongodb, BiLogoRedux, BiLogoTailwindCss } from 'react-icons/bi'
 import {
-  BiLogoFirebase,
-  // BiLogoFlask,
-  BiLogoMongodb,
-  BiLogoRedux,
-  BiLogoTailwindCss,
-  // BiLogoTypescript,
-} from 'react-icons/bi'
-import {
-  // FaAws,
   FaCss3,
   FaDocker,
   FaGitAlt,
@@ -42,10 +34,18 @@ import {
 import { FaRegCalendarDays, FaXTwitter } from 'react-icons/fa6'
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { IoLogoJavascript } from 'react-icons/io5'
-// import { RiNextjsFill } from 'react-icons/ri'
-import { SiExpress
-  // , SiMui, SiPrisma 
-} from 'react-icons/si'
+import { SiExpress } from 'react-icons/si'
+
+//=================================================================================================
+import type React from 'react'
+import { useState } from 'react'
+import { Container, Grid, GridItem, Input, Textarea, VStack, Field } from '@chakra-ui/react'
+import { HiMail } from 'react-icons/hi'
+import { HiPhone } from 'react-icons/hi'
+
+import { FaMapMarkerAlt } from 'react-icons/fa'
+
+//end==========================================================================================================
 
 export default function Home() {
   return (
@@ -72,7 +72,7 @@ export default function Home() {
           <TechStack />
           <Projects />
           <Work />
-          <Contact />
+          <ContactForm />
         </Stack>
       </Flex>
     </>
@@ -157,26 +157,26 @@ const About = () => {
 
 const TechStack = () => {
   const items = [
-    // { name: 'TypeScript', badge: <BiLogoTypescript /> },
     { name: 'JavaScript', badge: <IoLogoJavascript /> },
     { name: 'React', badge: <FaReact /> },
-    // { name: 'Next', badge: <RiNextjsFill /> },
     { name: 'Tailwind', badge: <BiLogoTailwindCss /> },
     { name: 'Redux', badge: <BiLogoRedux /> },
-    // { name: 'Flask', badge: <BiLogoFlask /> },
     { name: 'HTML5', badge: <FaHtml5 /> },
     { name: 'CSS3', badge: <FaCss3 /> },
     { name: 'Node', badge: <FaNodeJs /> },
     { name: 'Express', badge: <SiExpress /> },
     { name: 'Python', badge: <FaPython /> },
     { name: 'MongoDB', badge: <BiLogoMongodb /> },
-    // { name: 'AWS', badge: <FaAws /> },
-    // { name: 'OpenAI', badge: <AiOutlineOpenAI /> },
     { name: 'Firebase', badge: <BiLogoFirebase /> },
     { name: 'Git', badge: <FaGitAlt /> },
     { name: 'Docker', badge: <FaDocker /> },
     { name: 'Java', badge: <FaJava /> },
     { name: 'Wordpress', badge: <FaWordpress /> },
+    // { name: 'TypeScript', badge: <BiLogoTypescript /> },
+    // { name: 'Next', badge: <RiNextjsFill /> },
+    // { name: 'Flask', badge: <BiLogoFlask /> },
+    // { name: 'AWS', badge: <FaAws /> },
+    // { name: 'OpenAI', badge: <AiOutlineOpenAI /> },
     // { name: 'Prisma', badge: <SiPrisma /> },
     // { name: 'MUI', badge: <SiMui /> },
   ]
@@ -292,25 +292,390 @@ const Work = () => {
   )
 }
 
-const Contact = () => {
+// const Contact = () => {
+//   return (
+//     <Stack gap={6} marginBottom={10} id="contact">
+//       <Heading as={'h2'} fontSize={{ base: 'xl', md: '2xl' }} color={'brand'}>
+//         Contact
+//       </Heading>
+//       <Box borderWidth={'1px'} p={5} borderRadius={'lg'} borderColor={'gray.subtel'}>
+//         <Text textAlign={'center'} fontSize={'sm'} color={'brand.secondary'}>
+//           Best way to reach me is through:{' '}
+//           <CNLink
+//             _hover={{ color: 'brand' }}
+//             color={'brand.secondary'}
+//             _focus={{ boxShadow: 'none' }}
+//             href={siteConfig.contact.emailHref}
+//           >
+//             {siteConfig.contact.email}
+//           </CNLink>
+//         </Text>
+//       </Box>
+//     </Stack>
+//   )
+// }
+
+const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  // ============================================================================================
+  //   const handleSubmit = async (e: React.FormEvent) => {
+  //     e.preventDefault()
+  //     setIsSubmitting(true)
+
+  //     const form = e.target as HTMLFormElement
+  //     const formData = new FormData(form)
+
+  //     try {
+  //       const response = await fetch(form.action, {
+  //         method: form.method,
+  //         body: formData,
+  //       })
+
+  //       if (response.ok) {
+  //         setIsSubmitted(true)
+  //         setTimeout(() => {
+  //           setIsSubmitted(false)
+  //           setFormData({ name: '', email: '', subject: '', message: '' })
+  //         }, 3000)
+  //       } else {
+  //         throw new Error('Form submission failed')
+  //       }
+  //     } catch (error) {
+  //       console.error('Error submitting form:', error)
+  //     } finally {
+  //       setIsSubmitting(false)
+  //     }
+  //   }
+
+  //   if (isSubmitted) {
+  //     return (
+  // <Container maxW="4xl" py={6}>
+  //   <Box
+  //     // bg="white"
+  //     // _dark={{ bg: 'gray.800' }}
+  //     borderRadius="lg"
+  //     border="1px"
+  //     borderColor="gray.200"
+  //     // _dark={{ borderColor: 'gray.600' }}
+  //     shadow="sm"
+  //   >
+  //     <Box textAlign="center" py={12} px={6}>
+  //       <Box
+  //         w={16}
+  //         h={16}
+  //         bg="green.100"
+  //         _dark={{ bg: 'green.900' }}
+  //         borderRadius="full"
+  //         display="flex"
+  //         alignItems="center"
+  //         justifyContent="center"
+  //         mx="auto"
+  //         mb={4}
+  //       >
+  //         <HiMail size={32} color="var(--chakra-colors-green-600)" />
+  //       </Box>
+  //       <Heading size="lg" mb={2}>
+  //         Message Sent!
+  //       </Heading>
+  //       <Text color="gray.600" _dark={{ color: 'gray.300' }}>
+  //         Thank you for reaching out. I'll get back to you as soon as possible.
+  //       </Text>
+  //     </Box>
+  //   </Box>
+  // </Container>
+  //     )
+  //   }
+  // ===================================================================================================
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const form = e.target as HTMLFormElement
+      const formDataToSend = new FormData(form)
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formDataToSend,
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        // ✅ Trigger success message
+        setIsSubmitted(true)
+
+        // ✅ Reset form fields
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        console.error('Form submission failed with status:', response.status)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  // if (isSubmitted) {
+  //   return (
+  //     <Container maxW="4xl" py={6}>
+  //       <Box>
+  //         <Box textAlign="center" py={12} px={6}>
+  //           ...
+  //           <Heading size="lg" mb={2}>
+  //             Message Sent!
+  //           </Heading>
+  //           <Text>Thank you for reaching out. I'll get back to you as soon as possible.</Text>
+  //         </Box>
+  //       </Box>
+  //     </Container>
+  //   )
+  // }
+  if (isSubmitted) {
+    return (
+      <Container maxW="4xl" py={6}>
+        <Box
+          // bg="white"
+          borderRadius="lg"
+          border="1px"
+          borderColor="gray.200"
+          _dark={{ bg: 'gray.800', borderColor: 'gray.600' }}
+          shadow="sm"
+        >
+          <Box textAlign="center" py={12} px={6}>
+            <Box
+              w={16}
+              h={16}
+              bg="green.100"
+              _dark={{ bg: 'green.900' }}
+              borderRadius="full"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              mx="auto"
+              mb={4}
+            >
+              <HiMail size={32} color="var(--chakra-colors-green-600)" />
+            </Box>
+            <Heading size="lg" mb={2}>
+              Message Sent!
+            </Heading>
+            <Text color="gray.600" _dark={{ color: 'gray.300' }}>
+              Thank you for reaching out. I'll get back to you as soon as possible.
+            </Text>
+          </Box>
+        </Box>
+      </Container>
+    )
+  }
+  // ====================================================================================================
   return (
-    <Stack gap={6} marginBottom={10} id="contact">
-      <Heading as={'h2'} fontSize={{ base: 'xl', md: '2xl' }} color={'brand'}>
-        Contact
-      </Heading>
-      <Box borderWidth={'1px'} p={5} borderRadius={'lg'} borderColor={'gray.subtel'}>
-        <Text textAlign={'center'} fontSize={'sm'} color={'brand.secondary'}>
-          Best way to reach me is through:{' '}
-          <CNLink
-            _hover={{ color: 'brand' }}
-            color={'brand.secondary'}
-            _focus={{ boxShadow: 'none' }}
-            href={siteConfig.contact.emailHref}
-          >
-            {siteConfig.contact.email}
-          </CNLink>
+    <Container
+      maxW="4xl"
+      py={6}
+      id="ContactForm"
+      borderWidth={'1px'}
+      p={5}
+      borderRadius={'lg'}
+      borderColor={'gray.subtel'}
+    >
+      <VStack gap={8} mb={8} textAlign="center">
+        <Heading size="2xl">Get In Touch</Heading>
+
+        {/* <Box borderWidth={'1px'} p={5} borderRadius={'lg'} borderColor={'gray.subtel'}> */}
+
+        <Text color="gray.600" _dark={{ color: 'gray.300' }} maxW="2xl">
+          Have a project in mind or want to collaborate? I'd love to hear from you. Send me a
+          message and I'll respond as soon as possible.
         </Text>
-      </Box>
-    </Stack>
+      </VStack>
+
+      <Grid templateColumns={{ base: '1fr', md: '1fr 2fr' }} gap={8}>
+        {/* Contact Info */}
+        <GridItem>
+          <VStack gap={6} align="stretch">
+            <HStack gap={4} align="start">
+              <Box
+                w={10}
+                h={10}
+                bg="blue.50"
+                _dark={{ bg: 'blue.900' }}
+                borderRadius="lg"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexShrink={0}
+              >
+                <HiMail size={20} />
+              </Box>
+              <Box minW={0}>
+                <Heading size="sm" mb={1}>
+                  Email
+                </Heading>
+                <Text
+                  fontSize="sm"
+                  color="gray.600"
+                  _dark={{ color: 'gray.300' }}
+                  wordBreak="break-all"
+                  whiteSpace="normal"
+                >
+                  manishmuchhadiya8@gmail.com
+                </Text>
+              </Box>
+            </HStack>
+
+            <HStack gap={4} align="start">
+              <Box
+                w={10}
+                h={10}
+                bg="blue.50"
+                _dark={{ bg: 'blue.900' }}
+                borderRadius="lg"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexShrink={0}
+              >
+                <HiPhone size={20} />
+              </Box>
+              <Box>
+                <Heading size="sm" mb={1}>
+                  Phone
+                </Heading>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
+                  +91 9979492318
+                </Text>
+              </Box>
+            </HStack>
+
+            <HStack gap={4} align="start">
+              <Box
+                w={10}
+                h={10}
+                bg="blue.50"
+                _dark={{ bg: 'blue.900' }}
+                borderRadius="lg"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexShrink={0}
+              >
+                <FaMapMarkerAlt size={20} />
+              </Box>
+              <Box>
+                <Heading size="sm" mb={1}>
+                  Location
+                </Heading>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
+                  Morbi, Gujarat
+                </Text>
+              </Box>
+            </HStack>
+          </VStack>
+        </GridItem>
+
+        {/* Contact Form */}
+        <GridItem>
+          <Box borderRadius="lg" border="1px" shadow="sm">
+            <Box
+              p={6}
+              borderBottom="1px"
+              borderColor="gray.200"
+              _dark={{ borderColor: 'gray.600' }}
+            >
+              <Heading size="md">Send Message</Heading>
+              <Text color="gray.600" _dark={{ color: 'gray.300' }} mt={2}>
+                Fill out the form below and I'll get back to you within 24 hours.
+              </Text>
+            </Box>
+            <Box p={6}>
+              <Box
+                as="form"
+                onSubmit={handleSubmit}
+                action="https://formspree.io/f/xkgbzbzw"
+                method="POST"
+              >
+                <VStack gap={6}>
+                  <Grid templateColumns={{ base: '1fr', sm: '1fr 1fr' }} gap={4} w="full">
+                    <GridItem>
+                      <Field.Root required>
+                        <Field.Label>Full Name</Field.Label>
+                        <Input
+                          name="name"
+                          placeholder="Your name"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                      </Field.Root>
+                    </GridItem>
+                    <GridItem>
+                      <Field.Root required>
+                        <Field.Label>Email Address</Field.Label>
+                        <Input
+                          name="email"
+                          type="email"
+                          placeholder="your@example.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                      </Field.Root>
+                    </GridItem>
+                  </Grid>
+
+                  <Field.Root required>
+                    <Field.Label>Subject</Field.Label>
+                    <Input
+                      name="subject"
+                      placeholder="Project Inquiry"
+                      value={formData.subject}
+                      onChange={handleChange}
+                    />
+                  </Field.Root>
+
+                  <Field.Root required>
+                    <Field.Label>Message</Field.Label>
+                    <Textarea
+                      name="message"
+                      placeholder="Tell me about your project or how I can help you..."
+                      minH="120px"
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </Field.Root>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    w="full"
+                    isLoading={isSubmitting}
+                    loadingText="Sending..."
+                  >
+                    Send Message
+                  </Button>
+                </VStack>
+              </Box>
+            </Box>
+          </Box>
+        </GridItem>
+      </Grid>
+    </Container>
   )
 }

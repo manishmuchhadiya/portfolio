@@ -148,6 +148,6 @@ const navitems: NavLink[] = [
   {
     label: 'Contact',
     icon: <IoMailOpenOutline />,
-    href: '#contact',
+    href: '#ContactForm',
   },
 ]
