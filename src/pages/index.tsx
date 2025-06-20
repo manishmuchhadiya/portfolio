@@ -36,7 +36,6 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { IoLogoJavascript } from 'react-icons/io5'
 import { SiExpress } from 'react-icons/si'
 
-//=================================================================================================
 import type React from 'react'
 import { useState } from 'react'
 import { Container, Grid, GridItem, Input, Textarea, VStack, Field } from '@chakra-ui/react'
@@ -45,7 +44,6 @@ import { HiPhone } from 'react-icons/hi'
 
 import { FaMapMarkerAlt } from 'react-icons/fa'
 
-//end==========================================================================================================
 
 export default function Home() {
   return (
@@ -292,29 +290,6 @@ const Work = () => {
   )
 }
 
-// const Contact = () => {
-//   return (
-//     <Stack gap={6} marginBottom={10} id="contact">
-//       <Heading as={'h2'} fontSize={{ base: 'xl', md: '2xl' }} color={'brand'}>
-//         Contact
-//       </Heading>
-//       <Box borderWidth={'1px'} p={5} borderRadius={'lg'} borderColor={'gray.subtel'}>
-//         <Text textAlign={'center'} fontSize={'sm'} color={'brand.secondary'}>
-//           Best way to reach me is through:{' '}
-//           <CNLink
-//             _hover={{ color: 'brand' }}
-//             color={'brand.secondary'}
-//             _focus={{ boxShadow: 'none' }}
-//             href={siteConfig.contact.emailHref}
-//           >
-//             {siteConfig.contact.email}
-//           </CNLink>
-//         </Text>
-//       </Box>
-//     </Stack>
-//   )
-// }
-
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -331,76 +306,6 @@ const ContactForm: React.FC = () => {
       [e.target.name]: e.target.value,
     }))
   }
-
-  // ============================================================================================
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault()
-  //     setIsSubmitting(true)
-
-  //     const form = e.target as HTMLFormElement
-  //     const formData = new FormData(form)
-
-  //     try {
-  //       const response = await fetch(form.action, {
-  //         method: form.method,
-  //         body: formData,
-  //       })
-
-  //       if (response.ok) {
-  //         setIsSubmitted(true)
-  //         setTimeout(() => {
-  //           setIsSubmitted(false)
-  //           setFormData({ name: '', email: '', subject: '', message: '' })
-  //         }, 3000)
-  //       } else {
-  //         throw new Error('Form submission failed')
-  //       }
-  //     } catch (error) {
-  //       console.error('Error submitting form:', error)
-  //     } finally {
-  //       setIsSubmitting(false)
-  //     }
-  //   }
-
-  //   if (isSubmitted) {
-  //     return (
-  // <Container maxW="4xl" py={6}>
-  //   <Box
-  //     // bg="white"
-  //     // _dark={{ bg: 'gray.800' }}
-  //     borderRadius="lg"
-  //     border="1px"
-  //     borderColor="gray.200"
-  //     // _dark={{ borderColor: 'gray.600' }}
-  //     shadow="sm"
-  //   >
-  //     <Box textAlign="center" py={12} px={6}>
-  //       <Box
-  //         w={16}
-  //         h={16}
-  //         bg="green.100"
-  //         _dark={{ bg: 'green.900' }}
-  //         borderRadius="full"
-  //         display="flex"
-  //         alignItems="center"
-  //         justifyContent="center"
-  //         mx="auto"
-  //         mb={4}
-  //       >
-  //         <HiMail size={32} color="var(--chakra-colors-green-600)" />
-  //       </Box>
-  //       <Heading size="lg" mb={2}>
-  //         Message Sent!
-  //       </Heading>
-  //       <Text color="gray.600" _dark={{ color: 'gray.300' }}>
-  //         Thank you for reaching out. I'll get back to you as soon as possible.
-  //       </Text>
-  //     </Box>
-  //   </Box>
-  // </Container>
-  //     )
-  //   }
-  // ===================================================================================================
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -419,10 +324,8 @@ const ContactForm: React.FC = () => {
       })
 
       if (response.ok) {
-        // ✅ Trigger success message
         setIsSubmitted(true)
 
-        // ✅ Reset form fields
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
         console.error('Form submission failed with status:', response.status)
@@ -434,21 +337,6 @@ const ContactForm: React.FC = () => {
     }
   }
 
-  // if (isSubmitted) {
-  //   return (
-  //     <Container maxW="4xl" py={6}>
-  //       <Box>
-  //         <Box textAlign="center" py={12} px={6}>
-  //           ...
-  //           <Heading size="lg" mb={2}>
-  //             Message Sent!
-  //           </Heading>
-  //           <Text>Thank you for reaching out. I'll get back to you as soon as possible.</Text>
-  //         </Box>
-  //       </Box>
-  //     </Container>
-  //   )
-  // }
   if (isSubmitted) {
     return (
       <Container maxW="4xl" py={6}>
@@ -479,14 +367,14 @@ const ContactForm: React.FC = () => {
               Message Sent!
             </Heading>
             <Text color="gray.600" _dark={{ color: 'gray.300' }}>
-              Thank you for reaching out. I'll get back to you as soon as possible.
+            Thank you for reaching out. I&apos;ll get back to you as soon as possible.
             </Text>
           </Box>
         </Box>
       </Container>
     )
   }
-  // ====================================================================================================
+
   return (
     <Container
       maxW="4xl"
@@ -500,11 +388,9 @@ const ContactForm: React.FC = () => {
       <VStack gap={8} mb={8} textAlign="center">
         <Heading size="2xl">Get In Touch</Heading>
 
-        {/* <Box borderWidth={'1px'} p={5} borderRadius={'lg'} borderColor={'gray.subtel'}> */}
-
         <Text color="gray.600" _dark={{ color: 'gray.300' }} maxW="2xl">
-          Have a project in mind or want to collaborate? I'd love to hear from you. Send me a
-          message and I'll respond as soon as possible.
+          Have a project in mind or want to collaborate? I&apos;d love to hear from you. Send me a
+          message and I&apos;ll respond as soon as possible.
         </Text>
       </VStack>
 
@@ -603,7 +489,7 @@ const ContactForm: React.FC = () => {
             >
               <Heading size="md">Send Message</Heading>
               <Text color="gray.600" _dark={{ color: 'gray.300' }} mt={2}>
-                Fill out the form below and I'll get back to you within 24 hours.
+                Fill out the form below and I&apos;ll get back to you within 24 hours.
               </Text>
             </Box>
             <Box p={6}>
