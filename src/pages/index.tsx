@@ -495,12 +495,7 @@ const ContactForm: React.FC = () => {
               </Text>
             </Box>
             <Box p={6}>
-              <Box
-                as="form"
-                onSubmit={handleSubmit}
-                // action=""
-                // method="POST"
-              >
+              <Box as="form" onSubmit={handleSubmit}>
                 <VStack gap={6}>
                   <Grid templateColumns={{ base: '1fr', sm: '1fr 1fr' }} gap={4} w="full">
                     <GridItem>
