@@ -15,7 +15,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  Container, Grid, GridItem, Input, Textarea, VStack, Field,chakra ,
+  Container, Grid, GridItem, Input, Textarea, VStack, Field,
 } from '@chakra-ui/react'
 
 import { IconType } from 'react-icons'
