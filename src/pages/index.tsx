@@ -15,7 +15,9 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Container, Grid, GridItem, Input, Textarea, VStack, Field,chakra ,
 } from '@chakra-ui/react'
+
 import { IconType } from 'react-icons'
 import { BiLogoFirebase, BiLogoMongodb, BiLogoRedux, BiLogoTailwindCss } from 'react-icons/bi'
 import {
@@ -38,7 +40,7 @@ import { SiExpress } from 'react-icons/si'
 
 import type React from 'react'
 import { useState } from 'react'
-import { Container, Grid, GridItem, Input, Textarea, VStack, Field } from '@chakra-ui/react'
+
 import { HiMail } from 'react-icons/hi'
 import { HiPhone } from 'react-icons/hi'
 
@@ -493,7 +495,7 @@ const ContactForm: React.FC = () => {
               </Text>
             </Box>
             <Box p={6}>
-              <Box
+              <chakra.form
                 as="form"
                 onSubmit={handleSubmit}
                 action="https://formspree.io/f/xkgbzbzw"
@@ -557,7 +559,7 @@ const ContactForm: React.FC = () => {
                     Send Message
                   </Button>
                 </VStack>
-              </Box>
+              </chakra.form>
             </Box>
           </Box>
         </GridItem>
