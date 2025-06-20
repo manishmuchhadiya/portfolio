@@ -317,8 +317,8 @@ const ContactForm: React.FC = () => {
       const form = e.target as HTMLFormElement
       const formDataToSend = new FormData(form)
 
-      const response = await fetch(form.action, {
-        method: form.method,
+      const response = await fetch('https://formspree.io/f/xkgbzbzw', {
+        method:'POST',
         body: formDataToSend,
         headers: {
           Accept: 'application/json',
@@ -495,11 +495,11 @@ const ContactForm: React.FC = () => {
               </Text>
             </Box>
             <Box p={6}>
-              <chakra.form
+              <Box
                 as="form"
                 onSubmit={handleSubmit}
-                action="https://formspree.io/f/xkgbzbzw"
-                method="POST"
+                // action=""
+                // method="POST"
               >
                 <VStack gap={6}>
                   <Grid templateColumns={{ base: '1fr', sm: '1fr 1fr' }} gap={4} w="full">
@@ -559,7 +559,7 @@ const ContactForm: React.FC = () => {
                     Send Message
                   </Button>
                 </VStack>
-              </chakra.form>
+              </Box>
             </Box>
           </Box>
         </GridItem>
